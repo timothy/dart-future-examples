@@ -3,5 +3,7 @@ import 'dart:async';
 main() {
   final completer = new Completer<String>();
   completer.future.then(print);
-  completer.complete('Hello World');
+  print("before completes");
+  completer.complete('Hello World');// this will happen last
+  print("after completes");
 }

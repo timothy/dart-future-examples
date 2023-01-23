@@ -11,7 +11,7 @@ main() async {
 }
 
 /// User-visible "fiboacci" function that uses an isolate to compute.
-Future<int> asyncFibonacci(int n) async {
+Future<Future> asyncFibonacci(int n) async {
   final response = new ReceivePort();
   await Isolate.spawn(_isolate, response.sendPort);
   final sendPort = await response.first as SendPort;

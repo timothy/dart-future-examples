@@ -10,4 +10,4 @@ main() {
 
 Future<String> getInFuture2() => new Future.value('2');
 
-Future<String> getInFuture3() => new Future.delayed(Duration.ZERO, () => '3');
+Future<String> getInFuture3() => new Future.delayed(Duration.zero, () => '3');

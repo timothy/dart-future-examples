@@ -16,15 +16,15 @@ main() async {
 }
 
 /// Reads 'file.json' synchronously (in the same thread).
-Map readSync() => JSON.decode(new File('file.json').readAsStringSync());
+Map readSync() => jsonDecode(new File('file.json').readAsStringSync());
 
 /// Reads 'file.json' asynchronously (in another thread managed by the VM).
 Future<Map> readAsync() async {
-  return JSON.decode(await new File('file.json').readAsString());
+  return jsonDecode(await new File('file.json').readAsString());
 }
 
 /// Reads 'file.json' synchronously in another isolate, similar to readAsync.
-Future<Map> readIsolate() async {
+Future<Future> readIsolate() async {
   final response = new ReceivePort();
   await Isolate.spawn(_isolate, response.sendPort);
   return response.first;
